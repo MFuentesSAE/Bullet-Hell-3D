@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject enemy = enemyPool.GetGameObjectFromPool(transform.position);
 
-        //Una vez que se tiene al enemygo del pool, revivirlo
+        //Una vez que se tiene al enemigo del pool, revivirlo
         EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
         enemyHealth?.Revive();
     }
