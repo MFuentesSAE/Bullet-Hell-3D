@@ -30,7 +30,8 @@ public class Projectile : MonoBehaviour
             enemy = collision.gameObject.GetComponentInParent<EnemyHealth>();
 
         enemy?.TakeDamage(damage);
-        gameObject.SetActive(false);
+
+        gameObject.SetActive(false);// Desactivar el objeto en lugar de destruirlo, para que "regresen" a su pool
     }
 
     IEnumerator LifetimeRoutine()

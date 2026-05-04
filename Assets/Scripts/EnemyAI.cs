@@ -16,12 +16,24 @@ public class EnemyAI : MonoBehaviour
     private bool isShooting = false;
     private float nextBurstTime = 0f;
 
+    private PoolManager poolManager;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         enemyCollider = GetComponent<Collider>();
         gun = GetComponent<Gun>();
+
+
+        //Usar el pool manager para setear el pool de balas del enemigo solamente una vez
+        poolManager = PoolManager.instance;
+
+        if(poolManager != null)
+        {
+            SetPool(poolManager.enemyBulletPool);
+
+		}
     }
 
     public void SetPool(GameObjectPool bulletPool)

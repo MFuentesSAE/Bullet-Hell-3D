@@ -346,9 +346,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61206d3c246a44054b4d993b38fd8247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPrefab: {fileID: 1206400234304264492, guid: aa7d9a7bb7ae94837b96a6efee5c4381, type: 3}
+  enemyPool: {fileID: 771971647}
   enemyBulletPool: {fileID: 1318542704}
   spawnInterval: 3
+--- !u!1 &771971645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771971646}
+  - component: {fileID: 771971647}
+  m_Layer: 0
+  m_Name: EnemyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &771971646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771971645}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 875009326}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &771971647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771971645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d300f65a06d549e59d093daae2427df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjectPool
+  gameObjectToPool: {fileID: 1206400234304264492, guid: aa7d9a7bb7ae94837b96a6efee5c4381, type: 3}
+  pool: []
+  poolDefaultSize: 25
 --- !u!1 &875009325
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 875009326}
+  - component: {fileID: 875009327}
   m_Layer: 0
   m_Name: Pools
   m_TagString: Untagged
@@ -380,8 +428,24 @@ Transform:
   m_Children:
   - {fileID: 2108344536}
   - {fileID: 1318542703}
+  - {fileID: 771971646}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &875009327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875009325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40fa21fe62279d42af3a82e42abe234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
+  playerBulletPool: {fileID: 2108344535}
+  enemyPool: {fileID: 771971647}
+  enemyBulletPool: {fileID: 1318542704}
 --- !u!1001 &1026700886
 PrefabInstance:
   m_ObjectHideFlags: 0

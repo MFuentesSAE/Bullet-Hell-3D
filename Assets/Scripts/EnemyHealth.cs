@@ -7,13 +7,19 @@ public class EnemyHealth : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = maxHealth;
-    }
+        Revive();
+	}
+
+    public void Revive() //Usar esta función cuando el enemigo sale del pool para que reinicie su hp
+    {
+		currentHealth = maxHealth;
+	}
 
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
         if (currentHealth <= 0f)
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
     }
 }
